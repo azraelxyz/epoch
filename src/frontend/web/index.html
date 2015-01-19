@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hello Endpoints!</title>
-    <script async src="/js/base.js"></script>
+    <title>Epoch Endpoints!</title>
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap-responsive.css">
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
     <style>
         body {
             padding-top: 40px;
@@ -35,55 +34,22 @@
         }
     </style>
 </head>
-<body>
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="brand" href="#">Hello Endpoints!</a>
-            <div class="nav-collapse collapse pull-right">
-                <a href="javascript:void(0);" class="btn" id="signinButton">Sign in</a>
-            </div>
-        </div>
+<body ng-app>
+<form class="container form-horizontal">
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Epoch</label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control text-center" ng-model="epoch" ng-init="epoch = 1">
     </div>
-</div>
-<div class="container">
-
-    <output id="outputLog"></output>
-
-    <form onsubmit="return false">
-        <h2>Get Greeting</h2>
-        <div><label for="id">Greeting ID:</label><input id="id" /></div>
-        <div><input id="getGreeting" type="submit" class="btn btn-small" value="Submit"></div>
-    </form>
-    
-    <form onsubmit="return false">
-        <h2>List Greetings</h2>
-        <div><input id="listGreeting" type="submit" class="btn btn-small" value="Submit"></div>
-    </form>
-    
-    <form onsubmit="return false">
-        <h2>Multiply Greetings</h2>
-        <div><label for="greeting">Greeting:</label><input id="greeting" /></div>
-        <div><label for="count">Count:</label><input id="count" /></div>
-        <div><input id="multiplyGreetings" type="submit" class="btn btn-small" value="Submit"></div>
-    </form>
-    
-    <form onsubmit="return false">
-        <h2>Authenticated Greeting</h2>
-        <div><input id="authedGreeting" type="submit" class="btn btn-small" disabled value="Submit"></div>
-    </form>
-
-    <script>
-        function init() {
-            google.appengine.samples.hello.init('//' + window.location.host + '/_ah/api');
-        }
-    </script>
-    <script src="https://apis.google.com/js/client.js?onload=init"></script>
-</div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">GMT+0</label>
+    <label class="col-sm-10 control-label">{{ epoch }}</label>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Current Epoch</label>
+    <label class="col-sm-10 control-label">{{ epoch }}</label>
+  </div>
+</form>
 </body>
 </html>

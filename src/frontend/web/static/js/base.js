@@ -1,11 +1,3 @@
-/**
- * @fileoverview
- * Provides methods for the Hello Endpoints sample UI and interaction with the
- * Hello Endpoints API.
- *
- * @author danielholevoet@google.com (Dan Holevoet)
- */
-
 /** google global namespace for Google projects. */
 var google = google || {};
 
