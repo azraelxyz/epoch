@@ -23,7 +23,7 @@ class EpochApi(remote.Service):
 
     @endpoints.method(TIME_RESOURCE, HumanReadableTime,
                       path='epoch/{sec}', http_method='GET',
-                      name='epoch.get')
+                      name='epoch.getEpoch')
     def epoch_get(self, request):
         try:
             msg = time.strftime("%a, %d %b %Y %H:%M:%S +0000",
