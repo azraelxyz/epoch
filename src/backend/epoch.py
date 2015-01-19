@@ -19,15 +19,15 @@ class EpochApi(remote.Service):
 
     TIME_RESOURCE = endpoints.ResourceContainer(
             message_types.VoidMessage,
-            nanosec=messages.IntegerField(1, variant=messages.Variant.INT64))
+            sec=messages.IntegerField(1, variant=messages.Variant.INT64))
 
     @endpoints.method(TIME_RESOURCE, HumanReadableTime,
-                      path='epoch/{nanosec}', http_method='GET',
+                      path='epoch/{sec}', http_method='GET',
                       name='epoch.get')
     def epoch_get(self, request):
         try:
             msg = time.strftime("%a, %d %b %Y %H:%M:%S +0000",
-                                   time.localtime(request.nanosec))
+                                   time.localtime(request.sec))
             return HumanReadableTime(message=msg)
         except:
             raise endpoints.NotFoundException('Convert error')
