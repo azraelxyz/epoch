@@ -8,7 +8,7 @@ google.appengine.epoch.getEpoch = function(sec) {
     gapi.client.epoch.getEpoch({'sec': sec}).execute(
         function(resp) {
             if (!resp.code) {
-                console.log(resp);
+                document.querySelector('#hrt').innerHTML = resp.message;
             }
         });
 };
