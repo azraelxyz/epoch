@@ -4,8 +4,8 @@ google.appengine = google.appengine || {};
 
 google.appengine.epoch = google.appengine.epoch || {};
 
-google.appengine.epoch.getEpoch = function(epoch) {
-    gapi.client.epoch.getEpoch({'epoch': epoch}).execute(
+google.appengine.epoch.getEpoch = function(sec) {
+    gapi.client.epoch.getEpoch({'sec': sec}).execute(
         function(resp) {
             if (!resp.code) {
                 console.log(resp);
@@ -14,8 +14,8 @@ google.appengine.epoch.getEpoch = function(epoch) {
 };
 
 google.appengine.epoch.register = function() {
-  var getEpoch = document.querySelector('#epoch');
-  getEpoch.addEventListener('keyup', function(e) {
+  var convertBtn = document.querySelector('#convert');
+  convertBtn.addEventListener('click', function(e) {
     google.appengine.epoch.getEpoch(document.querySelector('#epoch').value);
   });
 };
