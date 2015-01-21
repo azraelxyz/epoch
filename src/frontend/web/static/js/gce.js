@@ -4,13 +4,15 @@ google.appengine = google.appengine || {};
 
 google.appengine.epoch = google.appengine.epoch || {};
 
-google.appengine.epoch.getEpoch = function(sec) {
+google.appengine.epoch.getEpoch = function(sec, scope, cbk) {
     gapi.client.epoch.getEpoch({'sec': sec}).execute(
         function(resp) {
             if (!resp.code) {
-                document.querySelector('#hrt').innerHTML = resp.message;
+                cbk(scope, resp.message);
+                scope.$apply();
             }
-        });
+        }
+    );
 };
 
 google.appengine.epoch.register = function() {
@@ -24,7 +26,7 @@ google.appengine.epoch.init = function(apiRoot) {
   var apisToLoad;
   var callback = function() {
     if (--apisToLoad == 0) {
-      google.appengine.epoch.register();
+      //google.appengine.epoch.register();
     }
   }
 

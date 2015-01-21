@@ -3,7 +3,9 @@
 <head>
     <title>Epoch Endpoints!</title>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
-    <script src="/js/base.js"></script>
+    <script src="/js/service.js"></script>
+    <script src="/js/controller.js"></script>
+    <script src="/js/gce.js"></script>
     <script>
         function init() {
             google.appengine.epoch.init('//' + window.location.host + '/_ah/api');
@@ -41,32 +43,21 @@
         }
     </style>
 </head>
-<body ng-app>
-    <form class="container form-horizontal">
+<body>
+    <form class="container form-horizontal" ng-app="EpochConvert" ng-controller="EpochController as epoch">
         <div class="form-group">
-            <label class="col-sm-2 control-label">Epoch</label>
+            <label class="col-sm-2 control-label">Epoch:</label>
             <div class="col-sm-10">
-                <input type="number" class="form-control text-center" id="epoch" ng-model="epoch" ng-init="epoch = 1262304000">
+                <input type="number" class="form-control text-center" min="0" ng-model="epoch.mrt" required>
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-12"><input type="submit" class="btn btn-default pull-right" id="convert" value="convert"></div>
+            <div class="col-sm-12"><input type="submit" class="btn btn-default pull-right" value="convert" ng-click="epoch.mrt2hrt(epoch.mrt)"></div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">GMT+0</label>
-            <label class="col-sm-10 control-label" id="hrt"></label>
+            <label class="col-sm-2 control-label">GMT+0:</label>
+            <label class="col-sm-10 control-label">{{hrt}}</label>
         </div>
-<!--TBD
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Your time zone</label>
-            <label class="col-sm-10 control-label" id="ytz"></label>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Current Epoch</label>
-            <label class="col-sm-10 control-label"></label>
-        </div>
-
--->
     </form>
 </body>
 </html>
